@@ -1,4 +1,5 @@
 SITS2::Application.routes.draw do
+  devise_for :users
   resources :ships
 
   get "sits_app/app"
