@@ -1,4 +1,7 @@
 SITS2::Application.routes.draw do
+  resources :ships
+
+  get "sits_app/app"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

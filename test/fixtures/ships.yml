@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  class: MyString
+  pivot: 1
+  roll: 1
+  notes: MyText
+
+two:
+  name: 
+  class: MyString
+  pivot: 1
+  roll: 1
+  notes: MyText
