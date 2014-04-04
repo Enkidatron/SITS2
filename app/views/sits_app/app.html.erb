@@ -1,3 +1,19 @@
-<h1>SitsApp#app</h1>
-<p>Find me in app/views/sits_app/app.html.erb</p>
-<button type="button" class="btn btn-primary">Hello</button>
+
+<div class="row" id="shipListRow">
+
+</div>
+<div class="row" id="navigationRow">
+
+</div>
+<div class="row" id="targetingRow">
+
+</div>
+
+
+
+<script type="text/javascript">
+  $(function () {
+  	SitsApp.initialize({ ships: <%= @ships.to_json %> });
+  	// SitsApp.initialize({});
+  });
+</script>

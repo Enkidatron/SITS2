@@ -1,10 +1,11 @@
 class ShipsController < ApplicationController
   before_action :set_ship, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json
 
   # GET /ships
   # GET /ships.json
   def index
-    @ships = Ship.all
+    respond_with(@ships = Ship.all)
   end
 
   # GET /ships/1
