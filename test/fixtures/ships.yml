@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  class: MyString
+  name: MyString
+  ship_class: MyString
   pivot: 1
   roll: 1
   notes: MyText
+  user_id: 1
 
 two:
-  name: 
-  class: MyString
+  name: MyString
+  ship_class: MyString
   pivot: 1
   roll: 1
   notes: MyText
+  user_id: 1

@@ -4,10 +4,11 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Class</th>
+      <th>Ship class</th>
       <th>Pivot</th>
       <th>Roll</th>
       <th>Notes</th>
+      <th>User</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,10 +19,11 @@
     <% @ships.each do |ship| %>
       <tr>
         <td><%= ship.name %></td>
-        <td><%= ship.class %></td>
+        <td><%= ship.ship_class %></td>
         <td><%= ship.pivot %></td>
         <td><%= ship.roll %></td>
         <td><%= ship.notes %></td>
+        <td><%= ship.user_id %></td>
         <td><%= link_to 'Show', ship %></td>
         <td><%= link_to 'Edit', edit_ship_path(ship) %></td>
         <td><%= link_to 'Destroy', ship, method: :delete, data: { confirm: 'Are you sure?' } %></td>

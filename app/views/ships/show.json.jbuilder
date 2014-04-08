@@ -1,1 +1,1 @@
-json.extract! @ship, :id, :name, :class, :pivot, :roll, :notes, :created_at, :updated_at
+json.extract! @ship, :id, :name, :ship_class, :pivot, :roll, :notes, :user_id, :created_at, :updated_at

@@ -18,7 +18,7 @@ class ShipsControllerTest < ActionController::TestCase
 
   test "should create ship" do
     assert_difference('Ship.count') do
-      post :create, ship: { class: @ship.class, name: @ship.name, notes: @ship.notes, pivot: @ship.pivot, roll: @ship.roll }
+      post :create, ship: { name: @ship.name, notes: @ship.notes, pivot: @ship.pivot, roll: @ship.roll, ship_class: @ship.ship_class, user_id: @ship.user_id }
     end
 
     assert_redirected_to ship_path(assigns(:ship))
@@ -35,7 +35,7 @@ class ShipsControllerTest < ActionController::TestCase
   end
 
   test "should update ship" do
-    patch :update, id: @ship, ship: { class: @ship.class, name: @ship.name, notes: @ship.notes, pivot: @ship.pivot, roll: @ship.roll }
+    patch :update, id: @ship, ship: { name: @ship.name, notes: @ship.notes, pivot: @ship.pivot, roll: @ship.roll, ship_class: @ship.ship_class, user_id: @ship.user_id }
     assert_redirected_to ship_path(assigns(:ship))
   end
 

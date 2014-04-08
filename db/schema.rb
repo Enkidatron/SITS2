@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408204527) do
+ActiveRecord::Schema.define(version: 20140408221009) do
 
   create_table "ships", force: true do |t|
     t.string   "name"
-    t.string   "class"
+    t.string   "ship_class"
     t.integer  "pivot"
     t.integer  "roll"
     t.text     "notes"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   add_index "ships", ["user_id"], name: "index_ships_on_user_id"

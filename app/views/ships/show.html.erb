@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>Class:</strong>
-  <%= @ship.class %>
+  <strong>Ship class:</strong>
+  <%= @ship.ship_class %>
 </p>
 
 <p>
@@ -23,6 +23,11 @@
 <p>
   <strong>Notes:</strong>
   <%= @ship.notes %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @ship.user_id %>
 </p>
 
 <%= link_to 'Edit', edit_ship_path(@ship) %> |

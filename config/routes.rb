@@ -1,7 +1,7 @@
 SITS2::Application.routes.draw do
-  devise_for :users
   resources :ships
 
+  devise_for :users
   get "sits_app/app"
 
   root :to => 'sits_app#app'
