@@ -2,6 +2,7 @@ class SitsAppController < ApplicationController
 	respond_to :html
 
   def app
-  	respond_with(@ships= Ship.all)
+  	@ships = current_user.ships
+  	respond_with(@ships)
   end
 end

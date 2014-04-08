@@ -5,7 +5,8 @@ class ShipsController < ApplicationController
   # GET /ships
   # GET /ships.json
   def index
-    respond_with(@ships = Ship.all)
+    @ships = current_user.ships
+    respond_with(@ships)
   end
 
   # GET /ships/1
@@ -70,6 +71,6 @@ class ShipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ship_params
-      params.require(:ship).permit(:name, :class, :pivot, :roll, :notes)
+      params.require(:ship, :user_id, :name, :pivot, :roll).permit(:class, :notes)
     end
 end
