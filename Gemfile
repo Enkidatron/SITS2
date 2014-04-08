@@ -52,3 +52,6 @@ end
 
 # Use devise for user management
 gem 'devise'
+
+# Use Rabl for JSON templating
+gem 'rabl-rails'
