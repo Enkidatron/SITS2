@@ -7,8 +7,8 @@ window.SitsApp =
 	Collections: {}
 	Views: {}
 	Routers: {}
-	initialize: (data) ->
-		this.ships = new SitsApp.Collections.Ships(data.ships)
+	initialize: (ships) ->
+		this.ships = new SitsApp.Collections.Ships(ships)
 		router = new SitsApp.Routers.Ships()
 		unless Backbone.history.started
 			Backbone.history.start()

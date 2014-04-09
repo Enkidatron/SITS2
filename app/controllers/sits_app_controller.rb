@@ -5,6 +5,7 @@ class SitsAppController < ApplicationController
   	@ships = current_user.ships unless current_user.nil?
   	# For testing purposes, respond with all ships for now:
   	@ships = Ship.all 
+  	gon.rabl
   	respond_with(@ships)
   end
 end

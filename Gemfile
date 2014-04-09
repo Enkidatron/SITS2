@@ -55,3 +55,6 @@ gem 'devise'
 
 # Use Rabl for JSON templating
 gem 'rabl-rails'
+
+# Use gon for passing initial data from Rails to backbone
+gem 'gon'

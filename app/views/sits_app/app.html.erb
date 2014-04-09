@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
   $(function () {
-  	SitsApp.initialize({ ships: <%= @ships.to_json.to_s.html_safe %> });
+  	SitsApp.initialize(gon.rabl);
   	// SitsApp.initialize({});
   });
 </script>
