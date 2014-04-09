@@ -63,4 +63,5 @@ gem 'gon'
 gem 'rails-backbone-forms'
 
 # Use js-routes for using Rails routes in Backbone code
-gem 'js-routes'
+# May not actually be necessary. 
+# gem 'js-routes'
