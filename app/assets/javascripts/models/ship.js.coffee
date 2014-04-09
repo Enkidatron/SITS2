@@ -1,5 +1,3 @@
-Ship = Backbone.Model.extend(
+SitsApp.Models.Ship = Backbone.Model.extend(
 	urlRoot: '/ships'
-	initialize: ->
-		alert "Hello"
 	)

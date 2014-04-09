@@ -7,9 +7,9 @@ SitsApp.Views.ShipsIndex = Backbone.View.extend(
 	render: ->
 		self = this
 		this.$el.html(JST['ships/index']())
-		this.collection.each(->
-			shipNavView = new SitsApp.Views.ShipNavView({ model: ship })
-			self.$('#shipListToolbar').append(taskView.render().el)
+		this.collection.each( (ship) ->
+			shipNavView = new SitsApp.Views.ShipNavView({ model: ship, className: "btn-group" })
+			self.$('#shipListToolbar').append(shipNavView.render().el)
 			)
 		return this
 	)

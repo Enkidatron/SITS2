@@ -5,7 +5,7 @@ SitsApp.Views.ShipNavView = Backbone.View.extend(
 		this.unbindFromAll()
 		this.remove()
 	render: ->
-		this.$el.html(JST['ships/shipNav']({ model: this.model }))
+		this.$el.html(JST['ships/ship_nav']({ model: this.model }))
 		return this
 	)
 
