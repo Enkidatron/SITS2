@@ -58,3 +58,9 @@ gem 'rabl-rails'
 
 # Use gon for passing initial data from Rails to backbone
 gem 'gon'
+
+# Use rails-backbone-forms to add form building capabilities to backbone
+gem 'rails-backbone-forms'
+
+# Use js-routes for using Rails routes in Backbone code
+gem 'js-routes'

@@ -1,6 +1,22 @@
 <button type="button" class="btn btn-default"><%= model.escape('name') %></button>
 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
 <ul class="dropdown-menu" role="menu">
-	<li><a href="#" role="menuitem">Edit</a></li>
-	<li><a href="#" role="menuitem">Delete</a></li>
+	<li><a href="#" role="menuitem" data-toggle="modal" data-target="#editModal<%= model.escape('id') %>">Edit</a></li>
+	<li><a href="#" class="delete" role="menuitem">Delete</a></li>
 </ul>
+<div class="modal fade" id="editModal<%= model.escape('id') %>" tabindex="-1" role="dialog" aria-labelledby="editModal<%= model.escape('id') %>Label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="editModal<%= model.escape('id') %>Label">Edit Ship</h4>
+			</div><!-- /.modal-header -->
+			<div class="modal-body">
+				
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+			</div><!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

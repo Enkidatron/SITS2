@@ -13,11 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
+//
+//= require js-routes
 //
 //= require underscore
 //= require backbone
 //= require backbone-support
+//= require backbone-forms-bootstrap
+//
+//= require bootstrap
 //
 //= require sits_app
 //

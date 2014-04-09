@@ -58,7 +58,7 @@ class ShipsController < ApplicationController
   def destroy
     @ship.destroy
     respond_to do |format|
-      format.html { redirect_to ships_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
