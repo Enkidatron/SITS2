@@ -1,0 +1,27 @@
+<div class="input-group">
+	<div class="input-group-addon"><%= model.bearing %></div>
+	<span class="input-group-btn">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Input <span class="caret" /></button>
+		<ul class="dropdown-menu">
+			<li><a href="#" data-toggle="modal" data-target="#input-modal-<%= model.propertyUpdated %>">Manual</a></li>
+			<li><a href="#">Legal Values</a></li>
+		</ul>
+	</span>
+</div>
+<!-- Input Modal -->
+<div class="modal fade" id="input-modal-<%= model.propertyUpdated %>" tabindex="-1" role="dialog" aria-labelledby="input-modal-<%= model.propertyUpdated %>-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="input-modal-<%= model.propertyUpdated %>-label">Input Bearing</h4>
+			</div><!-- /.modal-header -->
+			<div class="modal-body">
+				
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div><!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

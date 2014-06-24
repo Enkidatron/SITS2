@@ -2,6 +2,7 @@ SitsApp.Views.ShipNewView = Backbone.View.extend(
 	initialize: ->
 		this.bindTo(this.model, "change", this.render)
 		this.bindTo(this.model, "destroy", this.leave)
+		this.bindTo(this.model, "sync", this.render)
 	leave: ->
 		this.unbindFromAll()
 		this.remove()

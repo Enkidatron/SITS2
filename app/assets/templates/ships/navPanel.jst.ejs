@@ -1,0 +1,64 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 class="panel-title"><%= model.escape('name') %></h3>
+	</div>
+	<div class="panel-body">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="well well-sm">
+					<ul class="list-inline">
+						<li>Pivot: <%= model.escape('pivot') %></li>
+						<li>Roll: <%= model.escape('roll') %></li>
+						<li>Notes: <%= model.escape('notes') %></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3" id="input-start-front">
+					<!-- Start Front input -->
+				</div>
+				<div class="col-md-1" id="verify-start-mid-front">
+					<!-- Start Front to Midpoint Front verifier -->
+				</div>
+				<div class="col-md-3" id="input-mid-front">
+					<!-- Midpoint Front input -->
+				</div>
+				<div class="col-md-1" id="verify-mid-end-front">
+					<!-- Midpoint Front to Endpoint Front verifier -->
+				</div>
+				<div class="col-md-3" id="input-end-front">
+					<!-- Endpoint Front input -->
+				</div>
+				<div class="col-md-1" id="verify-start-end-front">
+					<!-- Start Front to Endpoint Front verifier -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3" id="input-start-top">
+					<!-- Start Top input -->
+				</div>
+				<div class="col-md-1" id="verify-start-mid-top">
+					<!-- Start Top to Midpoint Top verifier -->
+				</div>
+				<div class="col-md-3" id="input-mid-top">
+					<!-- Midpoint Top input -->
+				</div>
+				<div class="col-md-1" id="verify-mid-end-top">
+					<!-- Midpoint Top to Endpoint Top verifier -->
+				</div>
+				<div class="col-md-3" id="input-end-top">
+					<!-- Endpoint Top input -->
+				</div>
+				<div class="col-md-1" id="verify-start-end-top">
+					<!-- Start Top to Endpoint Top verifier -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-md-offset-9">
+					<!-- Next Turn button goes here -->
+					<button class="btn btn-primary" type="button">Next Turn</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

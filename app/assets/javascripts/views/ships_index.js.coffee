@@ -1,6 +1,7 @@
 SitsApp.Views.ShipsIndex = Backbone.View.extend(
 	initialize: ->
 		this.bindTo(this.collection, "change", this.render)
+		this.bindTo(this.collection, "sync", this.render)
 	leave: ->
 		this.unbindFromAll()
 		this.remove()

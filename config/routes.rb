@@ -1,5 +1,7 @@
 SITS2::Application.routes.draw do
   resources :ships
+  get "ships/detail/:id" => 'ships#detail'
+  put "ships/detail/:id" => 'ships#update'
 
   devise_for :users
   get "sits_app/app"

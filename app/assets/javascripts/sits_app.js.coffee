@@ -9,7 +9,7 @@ window.SitsApp =
 	Routers: {}
 	initialize: (ships) ->
 		this.ships = new SitsApp.Collections.Ships(ships)
-		router = new SitsApp.Routers.Ships()
+		this.router = new SitsApp.Routers.Ships()
 		unless Backbone.history.started
 			Backbone.history.start()
 			Backbone.history.started = true

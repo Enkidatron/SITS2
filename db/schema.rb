@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408221009) do
+ActiveRecord::Schema.define(version: 20140419172914) do
 
   create_table "ships", force: true do |t|
     t.string   "name"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20140408221009) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "startFront"
+    t.string   "startTop"
+    t.string   "midFront"
+    t.string   "midTop"
+    t.string   "endFront"
+    t.string   "endTop"
   end
 
   add_index "ships", ["user_id"], name: "index_ships_on_user_id"

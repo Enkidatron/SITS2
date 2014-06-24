@@ -63,6 +63,12 @@ class ShipsController < ApplicationController
     end
   end
 
+  # GET /ships/detail/1
+  # GET /ships/detail/1.json
+  def detail
+    set_ship 
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ship
@@ -71,6 +77,6 @@ class ShipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ship_params
-      params.require(:ship).permit(:name, :ship_class, :pivot, :roll, :notes, :user_id)
+      params.require(:ship).permit(:name, :ship_class, :pivot, :roll, :notes, :user_id, :startFront, :startTop, :midFront, :midTop, :endFront, :endTop)
     end
 end
