@@ -26,6 +26,9 @@ SitsApp.Views.ShipDetailNavigation = Backbone.View.extend(
 		this.addVerifyView('#verify-start-mid-top', 'update-start-top', 'update-mid-top', 'startMidTop')
 		this.addVerifyView('#verify-mid-end-top', 'update-mid-top', 'update-end-top', 'midEndTop')
 		this.addVerifyView('#verify-start-end-top', 'update-start-top', 'update-end-top', 'startEndTop')
+		this.addVerifyView('#verify-start-integrity', 'update-start-front','update-start-top', 'startIntegrity')
+		this.addVerifyView('#verify-mid-integrity', 'update-mid-front', 'update-mid-top', 'midIntegrity')
+		this.addVerifyView('#verify-end-integrity', 'update-end-front', 'update-end-top', 'endIntegrity')
 		return this
 )
 

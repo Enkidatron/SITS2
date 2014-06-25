@@ -8,7 +8,13 @@ SitsApp.Views.ShipDetailNavVerify = Backbone.View.extend(
 		this.unbindFromAll()
 		this.remove()
 	render: ->
-		this.$el.html(JST['ships/navPanelVerify']({ model: this.model, segment: this.options.segment }))
+		if this.model[this.options.segment]()
+			label = 'success'
+			word = 'Good!'
+		else
+			label = 'danger'
+			word = 'Not Good!'
+		this.$el.html(JST['ships/navPanelVerify']({ model: {label: label, word: word} }))
 		return this
 )
 

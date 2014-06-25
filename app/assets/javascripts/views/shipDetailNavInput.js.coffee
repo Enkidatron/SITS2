@@ -9,7 +9,7 @@ SitsApp.Views.ShipDetailNavInput = Backbone.View.extend(
 	events:
 		"hidden.bs.modal": "setbearing"
 	render: ->
-		console.log("ShipDetailNavInput.render: bearing: #{this.options.bearing} value: #{this.model.attributes[this.options.bearing]}")
+		# console.log("ShipDetailNavInput.render: bearing: #{this.options.bearing} value: #{this.model.attributes[this.options.bearing]}")
 		this.$el.html(JST['ships/navPanelInput'](
 			model:
 				bearing: this.model.attributes[this.options.bearing]

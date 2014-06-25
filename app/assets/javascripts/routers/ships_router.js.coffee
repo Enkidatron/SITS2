@@ -7,7 +7,6 @@ SitsApp.Routers.Ships = Backbone.Router.extend(
 		view = new SitsApp.Views.ShipsIndex { collection: SitsApp.ships, className: "col-md-12" }
 		$('#shipListRow').html(view.render().$el)
 	detail: (id) ->
-		console.log('router.detail')
 		view = new SitsApp.Views.ShipsIndex { collection: SitsApp.ships, className: "col-md-12" }
 		$('#shipListRow').html(view.render().$el)
 		SitsApp.currentShip = new SitsApp.Models.ShipDetail({id: id})
