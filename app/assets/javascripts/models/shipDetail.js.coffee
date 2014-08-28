@@ -1,4 +1,6 @@
 SitsApp.Models.ShipDetail = Backbone.Model.extend(
+	initialize: ->
+		this.ensureTargetCollection()
 	urlRoot: '/ships/detail/'
 	startMidFront: ->
 		if this.get('startFront')? and this.get('midFront')? and this.get('pivot')?
@@ -58,4 +60,28 @@ SitsApp.Models.ShipDetail = Backbone.Model.extend(
 			map[bearing] = value
 			this.set(map)
 			this.save()
+	setTargetingPhase: (phase) ->
+		this.set({'targetingPhase':phase})
+	getTargetingPhase: ->
+		return this.get('targetingPhase')
+	getTargetingPhaseOrientation: ->
+		phase = this.get('targetingPhase')
+		if phase == 'start' and this.startIntegrity()
+			return [this.get('startFront'),this.get('startTop')]
+		else if phase == 'midpoint' and this.midIntegrity()
+			return [this.get('midFront'), this.get('midTop')]
+		else if phase == 'endpoint' and this.endIntegrity()
+			return [this.get('endFront'), this.get('endTop')]
+	ensureTargetCollection: ->
+		this.targets ?= new SitsApp.Collections.ShipDetailTargets()
+		this.targets.setParent(this)
+	save: (attrs, options) ->
+		options ?= {}
+		# filter down to acceptable attributes
+		whitelist = ['id','name','pivot','roll','notes','startFront','startTop','midFront','midTop','endFront','endTop']
+		if attrs?
+			attrs = _.pick(attrs,whitelist)
+			options.data = JSON.stringify(attrs)
+		# Call the original save function
+		Backbone.Model.prototype.save.call(this,attrs,options)
 )

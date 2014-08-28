@@ -17,15 +17,14 @@ SitsApp.Routers.Ships = Backbone.Router.extend(
 		# cache our current ship
 		if SitsApp.currentShip?
 			unless SitsApp.loadedShips[SitsApp.currentShip.get('id')]? 
-				console.log('caching ship')
 				SitsApp.loadedShips[SitsApp.currentShip.get('id')] = SitsApp.currentShip
 		if SitsApp.loadedShips[id]?
-			console.log('load from cache')
 			SitsApp.currentShip = SitsApp.loadedShips[id]
 		else
-			console.log('creating new model')
 			SitsApp.currentShip = new SitsApp.Models.ShipDetail({id: id})
 		SitsApp.currentShip.fetch()
 		navView = new SitsApp.Views.ShipDetailNavigation({model: SitsApp.currentShip})
 		$('#navigationRow').html(navView.render().$el)
+		targetView = new SitsApp.Views.ShipDetailTargetPanelView({model: SitsApp.currentShip})
+		$('#targetingRow').html(targetView.render().$el)
 	)

@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-2">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<ul class="nav nav-pills nav-stacked">
+					<li><button class="btn <%if (model.getTargetingPhase() === 'start'){ %>btn-primary<% }else{ %>btn-default<% }%>" id="start">Start</button></li>
+					<li><button class="btn <%if (model.getTargetingPhase() === 'midpoint'){ %>btn-primary<% }else{ %>btn-default<% }%>" id="midpoint">Midpoint</button></li>
+					<li><button class="btn <%if (model.getTargetingPhase() === 'endpoint'){ %>btn-primary<% }else{ %>btn-default<% }%>" id="endpoint">Endpoint</button></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-10" id="target-table-area">
+	</div>
+</div>

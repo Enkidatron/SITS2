@@ -1,7 +1,7 @@
 SitsApp.Views.ShipDetailNavigation = Backbone.View.extend(
 	initialize: ->
 		this.bindTo(this.model, "destroy", this.leave)
-		this.bindTo(this.model, "sync", this.render)
+		this.bindTo(this.model, "change", this.render)
 	leave: ->
 		this.unbindFromAll()
 		this.remove()
