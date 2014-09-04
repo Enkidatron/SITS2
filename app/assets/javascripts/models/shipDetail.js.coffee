@@ -72,6 +72,48 @@ SitsApp.Models.ShipDetail = Backbone.Model.extend(
 			return [this.get('midFront'), this.get('midTop')]
 		else if phase == 'endpoint' and this.endIntegrity()
 			return [this.get('endFront'), this.get('endTop')]
+	getLegalValues: (bearing) ->
+		switch bearing
+			when 'startFront'
+				pair = 'startTop'
+				sideways = [['midFront',Math.ceil(this.get('pivot')/2)],['endFront',this.get('pivot')]]
+				filter = true
+			when 'startTop'
+				pair = 'startFront'
+				sideways = [['midTop',Math.ceil(this.get('roll')/2)],['endTop',this.get('roll')]]
+				filter = false
+			when 'midFront'
+				pair = 'midTop'
+				sideways = [['startFront',Math.ceil(this.get('pivot')/2)],['endFront',Math.ceil(this.get('pivot')/2)]]
+				filter = true
+			when 'midTop'
+				pair = 'midFront'
+				sideways = [['startTop',Math.ceil(this.get('roll')/2)],['endTop',Math.ceil(this.get('roll')/2)]]
+				filter = false
+			when 'endFront'
+				pair = 'endTop'
+				sideways = [['startFront',this.get('pivot')],['midFront',Math.ceil(this.get('pivot')/2)]]
+				filter = true
+			when 'endTop'
+				pair = 'endFront'
+				sideways = [['startTop',this.get('roll')],['midTop',Math.ceil(this.get('roll')/2)]]
+				filter = false
+		if this.get(pair)?
+			legalValues = SitsApp.ShipCalculator._getAdjustedWindowMetaChart(this.get(pair))[3]
+		for s in [0..1]	
+			if this.get(sideways[s][0])?
+				sidewaysValues = []
+				chart = SitsApp.ShipCalculator._getAdjustedWindowMetaChart(this.get(sideways[s][0]))
+				for i in [sideways[s][1]..0]
+					sidewaysValues = _.union(sidewaysValues,chart[i])
+				legalValues ?= sidewaysValues
+				legalValues = _.intersection(legalValues,sidewaysValues)
+		legalValues ?= []
+		if filter
+			lineValues = ['ab++','bc++','cd++','de++','ef++','fa++','ab--','bc--','cd--','de--','ef--','fa--']
+			legalValues = _.difference(legalValues,lineValues)
+		return legalValues
+		
 	ensureTargetCollection: ->
 		this.targets ?= new SitsApp.Collections.ShipDetailTargets()
 		this.targets.setParent(this)
