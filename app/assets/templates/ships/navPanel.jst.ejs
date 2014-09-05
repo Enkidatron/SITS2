@@ -4,24 +4,31 @@
 	</div>
 	<div class="panel-body">
 		<div class="row">
-			<div class="well well-sm">
-				<ul class="list-inline">
-					<li>Pivot: <%= model.escape('pivot') %></li>
-					<li>Roll: <%= model.escape('roll') %></li>
-					<li>Notes: <%= model.escape('notes') %></li>
-				</ul>
+			<div class="col-md-10">
+				<div class="well well-sm">
+					<ul class="list-inline">
+						<li>Pivot: <%= model.escape('pivot') %></li>
+						<li>Roll: <%= model.escape('roll') %></li>
+						<li>Notes: <%= model.escape('notes') %></li>
+					</ul>
+				</div>
 			</div>
+			<div class="col-md-2">
+				<!-- Next Turn button goes here -->
+				<button class="btn btn-primary" type="button" id="next-turn">Next Turn</button>
+			</div>
+
 		</div>
 		<div class="row">
 			<table class="table">
 				<thead>
 					<tr>
 						<th></th>
-						<th>Start: <div id="verify-start-integrity"></div></th>
+						<th><table><tr><td>Start: </td><td><div id="verify-start-integrity" title="Indicates whether the Start Front and Start Top positions make a valid ship"></div></td></tr></table></th>
 						<th></th>
-						<th>Midpoint: <div id="verify-mid-integrity"></div></th>
+						<th><table><tr><td>Midpoint: </td><td><div id="verify-mid-integrity" title="Indicates whether the Mid Front and Mid Top positions make a valid ship"></div></td></tr></table></th>
 						<th></th>
-						<th>Endpoint: <div id="verify-end-integrity"></div></th>
+						<th><table><tr><td>Endpoint: </td><td><div id="verify-end-integrity" title="Indicates whetherthe End Front and End Top positions make a valid ship"></div></td></tr></table></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -34,7 +41,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-start-mid-front">
+							<div id="verify-start-mid-front" title="Indicates whether the Start Front and Mid Front are valid, based on the ships pivot value">
 								<!-- Start Front to Midpoint Front verifier -->
 							</div>
 						</td>
@@ -44,7 +51,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-mid-end-front">
+							<div id="verify-mid-end-front" title="Indicates whether the Mid Front and End Front are valid, based on the ships pivot value">
 								<!-- Midpoint Front to Endpoint Front verifier -->
 							</div>
 						</td>
@@ -54,7 +61,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-start-end-front">
+							<div id="verify-start-end-front" title="Indicates whether the Start Front and End Front are valid, based on the ships pivot value">
 								<!-- Start Front to Endpoint Front verifier -->
 							</div>
 						</td>
@@ -67,7 +74,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-start-mid-top">
+							<div id="verify-start-mid-top" title="Indicates whether the Start Top and Mid Top are valid, based on the ships roll value">
 								<!-- Start Top to Midpoint Top verifier -->
 							</div>
 						</td>
@@ -77,7 +84,7 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-mid-end-top">
+							<div id="verify-mid-end-top" title="Indicates whether the Mid Top and End Top are valid, based on the ships roll value">
 								<!-- Midpoint Top to Endpoint Top verifier -->
 							</div>
 						</td>
@@ -87,19 +94,13 @@
 							</div>
 						</td>
 						<td>
-							<div id="verify-start-end-top">
+							<div id="verify-start-end-top" title="Indicates whether the Start Top and End Top are valid, based on the ships roll value">
 								<!-- Start Top to Endpoint Top verifier -->
 							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-md-offset-9">
-				<!-- Next Turn button goes here -->
-				<button class="btn btn-primary" type="button">Next Turn</button>
-			</div>
 		</div>
 	</div>
 </div>

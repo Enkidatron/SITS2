@@ -2,59 +2,88 @@ SitsApp.Models.ShipDetail = Backbone.Model.extend(
 	initialize: ->
 		this.ensureTargetCollection()
 	urlRoot: '/ships/detail/'
+	isPresent: (bearing) ->
+		return this.get(bearing)? and this.get(bearing) != ''
 	startMidFront: ->
-		if this.get('startFront')? and this.get('midFront')? and this.get('pivot')?
-			return SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startFront'), this.get('midFront'), Math.ceil(this.get('pivot')/2))
+		if this.isPresent('startFront') and this.isPresent('midFront') and this.isPresent('pivot')
+			if SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startFront'), this.get('midFront'), Math.ceil(this.get('pivot')/2))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	midEndFront: ->
-		if this.get('midFront')? and this.get('endFront')? and this.get('pivot')?
-			return SitsApp.ShipCalculator.verifyNavigationSegment(this.get('midFront'), this.get('endFront'), Math.ceil(this.get('pivot')/2))
+		if this.isPresent('midFront') and this.isPresent('endFront') and this.isPresent('pivot')
+			if SitsApp.ShipCalculator.verifyNavigationSegment(this.get('midFront'), this.get('endFront'), Math.ceil(this.get('pivot')/2))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	startEndFront: ->
-		if this.get('startFront')? and this.get('endFront')? and this.get('pivot')?
+		if this.isPresent('startFront') and this.isPresent('endFront') and this.isPresent('pivot')
 			answer = SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startFront'), this.get('endFront'), Math.ceil(this.get('pivot')))
-			if answer and this.get('midFront')?
+			if answer and this.isPresent('midFront')
 				answer = SitsApp.ShipCalculator.getTotalPathDistance(this.get('startFront'), this.get('midFront'), this.get('endFront')) <= this.get('pivot')
-			return answer
+			if answer
+				return 1
+			else
+				return 0
 		else
-			return false
+			return 2
 	startMidTop: ->
-		if this.get('startTop')? and this.get('midTop')? and this.get('roll')?
-			return SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startTop'), this.get('midTop'), Math.ceil(this.get('roll')/2))
+		if this.isPresent('startTop') and this.isPresent('midTop') and this.isPresent('roll')
+			if SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startTop'), this.get('midTop'), Math.ceil(this.get('roll')/2))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	midEndTop: ->
-		if this.get('midTop')? and this.get('endTop')? and this.get('roll')?
-			return SitsApp.ShipCalculator.verifyNavigationSegment(this.get('midTop'), this.get('endTop'), Math.ceil(this.get('roll')/2))
+		if this.isPresent('midTop') and this.isPresent('endTop') and this.isPresent('roll')
+			if SitsApp.ShipCalculator.verifyNavigationSegment(this.get('midTop'), this.get('endTop'), Math.ceil(this.get('roll')/2))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	startEndTop: ->
-		if this.get('startTop')? and this.get('endTop')? and this.get('roll')?
+		if this.isPresent('startTop') and this.isPresent('endTop') and this.isPresent('roll')
 			answer = SitsApp.ShipCalculator.verifyNavigationSegment(this.get('startTop'), this.get('endTop'), Math.ceil(this.get('roll')))
-			if answer and this.get('midTop')?
+			if answer and this.isPresent('midTop')
 				answer = SitsApp.ShipCalculator.getTotalPathDistance(this.get('startTop'), this.get('midTop'), this.get('endTop')) <= this.get('pivot')
-			return answer
+			if answer
+				return 1
+			else
+				return 0
 		else
-			return false
+			return 2
 	startIntegrity: ->
-		if this.get('startFront')? and this.get('startTop')?
-			return SitsApp.ShipCalculator.verifyIntegrity(this.get('startFront'), this.get('startTop'))
+		if this.isPresent('startFront') and this.isPresent('startTop')
+			if SitsApp.ShipCalculator.verifyIntegrity(this.get('startFront'), this.get('startTop'))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	midIntegrity: ->
-		if this.get('midFront')? and this.get('midTop')?
-			return SitsApp.ShipCalculator.verifyIntegrity(this.get('midFront'), this.get('midTop'))
+		if this.isPresent('midFront') and this.isPresent('midTop')
+			if SitsApp.ShipCalculator.verifyIntegrity(this.get('midFront'), this.get('midTop'))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	endIntegrity: ->
-		if this.get('endFront')? and this.get('endTop')?
-			return SitsApp.ShipCalculator.verifyIntegrity(this.get('endFront'), this.get('endTop'))
+		if this.isPresent('endFront') and this.isPresent('endTop')
+			if SitsApp.ShipCalculator.verifyIntegrity(this.get('endFront'), this.get('endTop'))
+				return 1
+			else 
+				return 0
 		else
-			return false
+			return 2
 	setbearing: (bearing, value) ->
-		if SitsApp.ShipCalculator.verifyBearing(value)
+		if value == '' or SitsApp.ShipCalculator.verifyBearing(value)
 			console.log("ShipDetail.setbearing: #{bearing}, #{value}")
 			map = {}
 			map[bearing] = value
@@ -98,10 +127,10 @@ SitsApp.Models.ShipDetail = Backbone.Model.extend(
 				pair = 'endFront'
 				sideways = [['startTop',this.get('roll')],['midTop',Math.ceil(this.get('roll')/2)]]
 				filter = false
-		if this.get(pair)?
-			legalValues = SitsApp.ShipCalculator._getAdjustedWindowMetaChart(this.get(pair))[3]
+		if this.get(pair)? and this.get(pair) != ''
+			legalValues = _.intersection(SitsApp.ShipCalculator._getAdjustedWindowMetaChart(this.get(pair))[3], SitsApp.ShipCalculator._getAdjustedWindowMetaChart(SitsApp.ShipCalculator._invertBearing(this.get(pair)))[3])
 		for s in [0..1]	
-			if this.get(sideways[s][0])?
+			if this.get(sideways[s][0])? and this.get(sideways[s][0]) != ''
 				sidewaysValues = []
 				chart = SitsApp.ShipCalculator._getAdjustedWindowMetaChart(this.get(sideways[s][0]))
 				for i in [sideways[s][1]..0]

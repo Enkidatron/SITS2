@@ -5,7 +5,8 @@ class ShipsController < ApplicationController
   # GET /ships
   # GET /ships.json
   def index
-    @ships = Ship.all
+    # @ships = Ship.all
+    @ships = current_user.ships unless current_user.nil?
     respond_with(@ships)
   end
 
@@ -26,8 +27,7 @@ class ShipsController < ApplicationController
   # POST /ships
   # POST /ships.json
   def create
-    @ship = Ship.new(ship_params)
-
+    @ship = current_user.ships.new(ship_params)
     respond_to do |format|
       if @ship.save
         format.html { redirect_to @ship, notice: 'Ship was successfully created.' }
@@ -36,7 +36,7 @@ class ShipsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @ship.errors, status: :unprocessable_entity }
       end
-    end
+      end
   end
 
   # PATCH/PUT /ships/1

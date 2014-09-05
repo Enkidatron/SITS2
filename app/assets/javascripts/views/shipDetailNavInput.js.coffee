@@ -8,6 +8,7 @@ SitsApp.Views.ShipDetailNavInput = Backbone.View.extend(
 		this.remove()
 	events:
 		"hidden.bs.modal": "setbearing"
+		"submit": "modalSubmit"
 		"click #manual": "setManualForm"
 		"click #legal": "setLegalForm"
 	render: ->
@@ -25,6 +26,9 @@ SitsApp.Views.ShipDetailNavInput = Backbone.View.extend(
 			).render()
 		this.$('.modal-body').html(this.form.el)
 		return this
+	modalSubmit: (e) ->
+		e.preventDefault()
+		this.$('.modal').modal('hide')
 	setbearing: ->
 		this.model.setbearing(this.options.bearing, this.form.getValue().bearing)
 	setManualForm: ->

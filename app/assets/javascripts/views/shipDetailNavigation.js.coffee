@@ -5,6 +5,16 @@ SitsApp.Views.ShipDetailNavigation = Backbone.View.extend(
 	leave: ->
 		this.unbindFromAll()
 		this.remove()
+	events:
+		"click #next-turn": "nextTurn"
+	nextTurn: ->
+		console.log('next turn')
+		this.model.setbearing('startFront',this.model.get('endFront'))
+		this.model.setbearing('startTop',this.model.get('endTop'))
+		this.model.setbearing('midFront','')
+		this.model.setbearing('midTop','')
+		this.model.setbearing('endFront','')
+		this.model.setbearing('endTop','')
 	addInputView: (element, propertyUpdated, bearing) ->
 		InputView = new SitsApp.Views.ShipDetailNavInput({model: this.model, propertyUpdated: propertyUpdated, bearing: bearing})
 		this.$(element).append(InputView.render().el)

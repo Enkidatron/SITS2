@@ -8,9 +8,13 @@ SitsApp.Views.ShipDetailNavVerify = Backbone.View.extend(
 		this.unbindFromAll()
 		this.remove()
 	render: ->
-		if this.model[this.options.segment]()
+		answer = this.model[this.options.segment]()
+		if answer == 1
 			label = 'success'
 			word = 'Good!'
+		else if answer == 2
+			label = 'warning'
+			word = 'Not Set'
 		else
 			label = 'danger'
 			word = 'Not Good!'
