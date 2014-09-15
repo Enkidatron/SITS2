@@ -1,0 +1,29 @@
+<!-- New Session (Login) Modal -->
+<div class="modal fade" id="newSessionModal" tabindex="-1" role="dialog" aria-labelledby="newSessionModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="newSessionModalLabel">Sign In</h4>
+			</div><!-- /.modal-header -->
+			<div class="modal-body">
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) ) do |f| %>
+				  <div><%= f.label :email %><br />
+					  <%= f.email_field :email, :autofocus => true %></div>
+
+				  <div><%= f.label :password %><br />
+					  <%= f.password_field :password %></div>
+
+				  <% if devise_mapping.rememberable? -%>
+				    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+				  <% end -%>
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+			  <div><%= f.submit "Sign in", class: 'btn btn-small btn-success'  %></div>
+				<% end %>
+
+				<%= render 'devise/shared/links'%>
+			</div><!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -13,7 +13,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
+			<!-- <ul class="nav navbar-nav navbar-right">
 				<% if user_signed_in? %>
 				<li><%= link_to "Edit Profile", edit_user_registration_path %></li>
 				<li><%= link_to "Logout #{current_user.name}", destroy_user_session_path, method: :delete %></li>
@@ -21,8 +21,15 @@
 				<li><%= link_to "Login", new_user_session_path %></li>
 				<li><%= link_to "Sign Up", new_user_registration_path%></li>
 				<% end %>
-			</ul>
+			</ul> -->
+			<%= render 'devise/shared/devise_items' %>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container -->
 </nav>
 <%= render 'layouts/about_modal' %>
+<% if user_signed_in? %>
+	<%= render 'devise/registrations/edit_modal' %>
+<% else %>
+	<%= render 'devise/sessions/new_modal' %>
+	<%= render 'devise/registrations/new_modal' %>
+<% end %>

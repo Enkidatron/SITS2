@@ -1,0 +1,38 @@
+<!-- Edit Account Modal -->
+<div class="modal fade" id="editAccountModal" tabindex="-1" role="dialog" aria-labelledby="editAccountModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="editAccountModalLabel">Edit <%= resource_name.to_s.humanize %></h4>
+			</div><!-- /.modal-header -->
+			<div class="modal-body">
+				<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+				  <%= devise_error_messages! %>
+
+				  <div><%= f.label :email %><br />
+				  <%= f.email_field :email, :autofocus => true %></div>
+
+				  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+				    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+				  <% end %>
+
+				  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+				  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+				  <div><%= f.label :password_confirmation %><br />
+				  <%= f.password_field :password_confirmation %></div>
+
+				  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+				  <%= f.password_field :current_password %></div>
+
+			</div><!-- /.modal-body -->
+			<div class="modal-footer">
+					<div><%= f.submit "Update", class: 'btn btn-small btn-success' %></div>
+				<% end %>
+
+				<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete , class: 'btn btn-small btn-warning' %></p>
+			</div><!-- /.modal-footer -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

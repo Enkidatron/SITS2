@@ -1,0 +1,10 @@
+<ul class="nav navbar-nav navbar-right">
+	<% if user_signed_in? %>
+	<li><a><%= current_user.email %></a></li>
+	<li><a href="#" data-toggle="modal" data-target="#editAccountModal">Edit Profile</a></li>
+	<li><%= link_to "Logout #{current_user.name}", destroy_user_session_path, method: :delete %></li>
+<% else %>
+	<li><a href="#" data-toggle="modal" data-target="#newSessionModal">Login</a></li>
+	<li><a href="#" data-toggle="modal" data-target="#newAccountModal">Sign Up</a></li>
+	<% end %>
+</ul>
