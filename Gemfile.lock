@@ -170,6 +170,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails-backbone-forms
   rails_12factor
+  rails_serve_static_assets
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

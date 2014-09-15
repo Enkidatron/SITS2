@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 group :production do
 	# Use postgres in production for Heroku
 	gem 'pg'
+	gem 'rails_serve_static_assets'
 end
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
