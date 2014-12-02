@@ -14,7 +14,7 @@ SitsApp.Views.ShipDetailTargetlistView = Backbone.View.extend(
 		self = this
 		this.$el.html(JST['ships/targetPanelTargetlist']())
 		this.collection.each( (target) ->
-			targetView = new SitsApp.Views.ShipDetailTargetView({model: target, tagName: "tr"})
+			targetView = new SitsApp.Views.ShipDetailTargetView({model: target})
 			self.$('#target-list').append(targetView.render().el)
 			)
 		return self

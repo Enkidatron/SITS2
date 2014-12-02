@@ -1,106 +1,68 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3 class="panel-title"><%= model.escape('name') %></h3>
-	</div>
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-10">
-				<div class="well well-sm">
-					<ul class="list-inline">
-						<li>Pivot: <%= model.escape('pivot') %></li>
-						<li>Roll: <%= model.escape('roll') %></li>
-						<li>Notes: <%= model.escape('notes') %></li>
-					</ul>
+<div class="col-xs-12">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= model.escape('name') %></h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="well well-sm">
+						<ul class="list-inline">
+							<li>Pivot: <%= model.escape('pivot') %></li>
+							<li>Roll: <%= model.escape('roll') %></li>
+							<li>Notes: <%= model.escape('notes') %></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-primary" type="button" id="next-turn">Next Turn</button>
+				</div>
+	
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-4">
+					<div class="row">
+						<div class="col-xs-8"><h4>Start: </h4></div>
+						<div class="col-xs-4" id="verify-start-integrity" title="Indicates whether the Start Front and Start Top positions make a valid ship"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8" id="input-start-front"></div>
+						<div class="col-xs-4" id="verify-start-mid-front" title="Indicates whether the Start Front and Mid Front are valid, based on the ships pivot value"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8" id="input-start-top"></div>
+						<div class="col-xs-4" id="verify-start-mid-top" title="Indicates whether the Mid Front and End Front are valid, based on the ships pivot value"></div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="row">
+						<div class="col-xs-8"><h4>Midpoint: </h4></div>
+						<div class="col-xs-4" id="verify-mid-integrity" title="Indicates whether the Mid Front and Mid Top positions make a valid ship"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8" id="input-mid-front"></div>
+						<div class="col-xs-4" id="verify-mid-end-front" title="Indicates whether the Mid Front and End Front are valid, based on the ships pivot value"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8" id="input-mid-top"></div>
+						<div class="col-xs-4" id="verify-mid-end-top" title="Indicates whether the Mid Top and End Top are valid, based on the ships roll value"></div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<div class="row">
+						<div class="col-xs-8"><h4>Endpoint: </h4></div>
+						<div class="col-xs-4" id="verify-end-integrity" title="Indicates whetherthe End Front and End Top positions make a valid ship"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8" id="input-end-front"></div>
+						<div class="col-xs-4" id="verify-start-end-front" title="Indicates whether the Start Front and End Front are valid, based on the ships pivot value"></div>
+					</div>		
+					<div class="row">
+						<div class="col-xs-8" id="input-end-top"></div>
+						<div class="col-xs-4" id="verify-start-end-top" title="Indicates whether the Start Top and End Top are valid, based on the ships roll value"></div>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<!-- Next Turn button goes here -->
-				<button class="btn btn-primary" type="button" id="next-turn">Next Turn</button>
-			</div>
-
-		</div>
-		<div class="row">
-			<table class="table">
-				<thead>
-					<tr>
-						<th></th>
-						<th><table><tr><td>Start: </td><td><div id="verify-start-integrity" title="Indicates whether the Start Front and Start Top positions make a valid ship"></div></td></tr></table></th>
-						<th></th>
-						<th><table><tr><td>Midpoint: </td><td><div id="verify-mid-integrity" title="Indicates whether the Mid Front and Mid Top positions make a valid ship"></div></td></tr></table></th>
-						<th></th>
-						<th><table><tr><td>Endpoint: </td><td><div id="verify-end-integrity" title="Indicates whetherthe End Front and End Top positions make a valid ship"></div></td></tr></table></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Front:</td>
-						<td>
-							<div id="input-start-front">
-								<!-- Start Front input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-start-mid-front" title="Indicates whether the Start Front and Mid Front are valid, based on the ships pivot value">
-								<!-- Start Front to Midpoint Front verifier -->
-							</div>
-						</td>
-						<td>
-							<div id="input-mid-front">
-								<!-- Midpoint Front input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-mid-end-front" title="Indicates whether the Mid Front and End Front are valid, based on the ships pivot value">
-								<!-- Midpoint Front to Endpoint Front verifier -->
-							</div>
-						</td>
-						<td>
-							<div id="input-end-front">
-								<!-- Endpoint Front input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-start-end-front" title="Indicates whether the Start Front and End Front are valid, based on the ships pivot value">
-								<!-- Start Front to Endpoint Front verifier -->
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>Top:</td>
-						<td>
-							<div id="input-start-top">
-								<!-- Start Top input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-start-mid-top" title="Indicates whether the Start Top and Mid Top are valid, based on the ships roll value">
-								<!-- Start Top to Midpoint Top verifier -->
-							</div>
-						</td>
-						<td>
-							<div id="input-mid-top">
-								<!-- Midpoint Top input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-mid-end-top" title="Indicates whether the Mid Top and End Top are valid, based on the ships roll value">
-								<!-- Midpoint Top to Endpoint Top verifier -->
-							</div>
-						</td>
-						<td>
-							<div id="input-end-top">
-								<!-- Endpoint Top input -->
-							</div>
-						</td>
-						<td>
-							<div id="verify-start-end-top" title="Indicates whether the Start Top and End Top are valid, based on the ships roll value">
-								<!-- Start Top to Endpoint Top verifier -->
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>

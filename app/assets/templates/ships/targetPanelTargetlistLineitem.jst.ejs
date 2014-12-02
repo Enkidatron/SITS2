@@ -1,41 +1,46 @@
-<td>
-	<div class="input-group">
-		<div class="input-group-addon"><%= model.get('distance') %></div>
-		<span class="input-group-btn">
-			<button class="btn btn-default" data-toggle="modal" data-target="#input-modal-target-<%= model.get('id') %>">Change</button>
-		</span>
+	<div class="row">
+	<div class="col-xs-6 col-md-2">
+		<div class="input-group">
+			<div class="input-group-addon"><%= model.get('distance') %></div>
+			<span class="input-group-btn">
+				<button class="btn btn-default" data-toggle="modal" data-target="#input-modal-target-<%= model.get('id') %>">Change</button>
+			</span>
+		</div>
+		<!-- Input Modal -->
+		<div class="modal fade" id="input-modal-target-<%= model.get('id') %>" tabindex="-1" role="dialog" aria-labelledby="input-modal-target-label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="input-modal-target-label">Input Target Distance</h4>
+					</div><!-- /.modal-header -->
+					<div class="modal-body">
+						
+					</div><!-- /.modal-body -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+					</div><!-- /.modal-footer -->
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>
-	<!-- Input Modal -->
-	<div class="modal fade" id="input-modal-target-<%= model.get('id') %>" tabindex="-1" role="dialog" aria-labelledby="input-modal-target-label" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="input-modal-target-label">Input Target Distance</h4>
-				</div><!-- /.modal-header -->
-				<div class="modal-body">
-					
-				</div><!-- /.modal-body -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-				</div><!-- /.modal-footer -->
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-</td>
-<td>
-	<div class="input-group">
-		<div class="input-group-addon"><%= model.getBearing() %></div>
+	<div class="col-xs-6 col-md-2">
+		<div class="input-group">
+			<div class="input-group-addon">Bearing:</div>
+			<div class="input-group-addon"><%= model.getBearing() %></div>
+		</div>
 	</div>
-</td>
-<td>
-	<div class="input-group">
-		<div class="input-group-addon"><%= model.getAspect() %></div>
+	<div class="col-xs-12 col-md-4">
+		<div class="input-group">
+			<div class="input-group-addon">Aspect:</div>
+			<div class="input-group-addon"><%= model.getAspect() %></div>
+		</div>
 	</div>
-</td>
-<td>
-	<div class="input-group">
-		<div class="input-group-addon"><%= model.getRange() %></div>
+	<div class="col-xs-8 col-md-2">
+		<div class="input-group">
+			<div class="input-group-addon">Range:</div>
+			<div class="input-group-addon"><%= model.getRange() %></div>
+		</div>
 	</div>
-</td>
-<td><button class="btn btn-default" id="delete-target">Delete</button></td>
+	<div class="col-xs-4 col-md-2"><button class="btn btn-default" id="delete-target">Delete</button></div>
+</div>
